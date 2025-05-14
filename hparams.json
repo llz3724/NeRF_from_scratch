@@ -1,0 +1,36 @@
+{
+    "experiment_name": "nerf_lego",
+    "basedir": "./data/nerf_synthetic/lego",
+    "logdir": "./logs",
+    "gpu_id": 0,
+
+    "device": "cuda",
+    "num_iters": 200001,
+    "lr_init": 5e-4,
+    "lr_decay_rate": 0.1,
+    "lr_decay_steps": 50000,
+
+    "batch_size": 1024,
+    "chunk_size": 32768, 
+    "N_coarse": 64,
+    "N_fine": 128,
+    "perturb_coarse": true,
+    "perturb_fine": true,
+
+    "L_xyz": 10,
+    "L_dir": 4,
+    "mlp_hidden_dims": 256,
+
+    "near_plane": 2.0,
+    "far_plane": 6.0,
+    "half_res_dataset": true,
+    "white_bkgd_dataset": true,
+    "testskip_dataset": 8,
+
+    "i_print": 100,
+    "i_img": 10000,
+    "i_weights_per": 0.05,
+    "i_testset": 50000,
+    
+    "load_checkpoint_path": null
+}
