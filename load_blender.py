@@ -150,6 +150,7 @@ class BlenderDataset(torch.utils.data.Dataset):
         dirs=torch.stack([(i-K[0,2])/K[0,0],-(j-K[1,2])/K[1,1],-torch.ones_like(i)],dim=-1) 
         
         rays_d=torch.matmul(dirs,c2w[:3,:3].T) 
+        rays_d/=torch.norm(rays_d,dim=-1,keepdim=True)
         rays_o=c2w[:3,-1].expand_as(rays_d)
         
         return rays_o.reshape(-1,3),rays_d.reshape(-1,3)
