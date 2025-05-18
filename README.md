@@ -30,3 +30,14 @@ train.py 用于训练
 view.py 渲染最终所有图片
 
 kaggle 部署要仔细调整文件读写和目录等等，很麻烦，要小心，而且 kaggle 不能在线修改，写错了得重新上传
+
+很诡异，ffmpeg不能正常生成视频，要先
+
+```
+ls r_*_*.png | sort -t '_' -k2,2n | awk '{print "file \x27" $0 "\x27"}' > mylist.txt
+```
+
+再
+```
+ffmpeg -f concat -safe 0 -r 30 -i mylist.txt -c:v libx264 -pix_fmt yuv420p -crf 23 output_video.mp4
+```
